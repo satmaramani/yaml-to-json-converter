@@ -1,0 +1,39 @@
+app:
+  name: MyApp
+  version: 1.0.0
+  environment: production
+  database:
+    host: localhost
+    port: 5432
+    name: myapp_db
+    credentials:
+      username: user123
+      password: pass123
+  services:
+    auth:
+      url: http://auth.myapp.com
+      endpoints:
+        login: /login
+        register: /register
+        logout: /logout
+    user:
+      url: http://user.myapp.com
+      endpoints:
+        profile: /profile
+        settings: /settings
+    payment:
+      url: http://payment.myapp.com
+      endpoints:
+        process: /process
+        status: /status
+  features:
+    - name: FeatureA
+      enabled: true
+      settings:
+        option1: value1
+        option2: value2
+    - name: FeatureB
+      enabled: false
+      settings:
+        option1: value1
+        option2: value2

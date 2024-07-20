@@ -1,0 +1,107 @@
+# yaml-to-json-converter
+
+A simple utility to convert deeply nested YAML files to JSON objects.
+
+## Installation
+
+```bash
+npm install yaml-to-json-converter
+```
+
+const readYamlFile = require('yaml-to-json-converter');
+
+const filePath = '<path/to/your/deeply-nested.yaml>'; //provide correc path here
+const jsonData = readYamlFile(filePath); //this JsonData object can be used to get complete info about the contents
+
+console.log(JSON.stringify(jsonData, null, 2));
+
+
+#### Usage Code from client repo 
+
+```plaintext
+    
+const readYamlFile = require("yaml-to-json-converter-sam");
+
+const filePath = "deeply-nested.yaml";
+const jsonData = readYamlFile(filePath);
+
+console.log(JSON.stringify(jsonData, null, 2));
+
+if (jsonData) {
+  const dbHost = jsonData.app.database.host;
+  console.log("Database Host:", dbHost);
+
+  console.log(
+    "Database credentials username :",
+    jsonData.app.database.credentials.username
+  );
+
+  console.log(
+    "UNDEFINED exampel services auth URL => :",
+    jsonData.app.services.auth.url.sdf
+  );
+}
+
+```
+
+#### deeply-nested.yml file contents for reference 
+
+```plaintext
+
+app:
+  name: MyApp
+  version: 1.0.0
+  environment: production
+  database:
+    host: localhost
+    port: 5432
+    name: myapp_db
+    credentials:
+      username: user123
+      password: pass123
+  services:
+    auth:
+      url: http://auth.myapp.com
+      endpoints:
+        login: /login
+        register: /register
+        logout: /logout
+    user:
+      url: http://user.myapp.com
+      endpoints:
+        profile: /profile
+        settings: /settings
+    payment:
+      url: http://payment.myapp.com
+      endpoints:
+        process: /process
+        status: /status
+  features:
+    - name: FeatureA
+      enabled: true
+      settings:
+        option1: value1
+        option2: value2
+    - name: FeatureB
+      enabled: false
+      settings:
+        option1: value1
+        option2: value2
+
+
+```
+
+#### Add a License
+
+Create a `LICENSE` file with your chosen license. For example, the MIT License:
+
+```plaintext
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+...
