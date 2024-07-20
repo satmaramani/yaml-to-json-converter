@@ -1,6 +1,6 @@
 {
   "name": "yaml-to-json-converter",
-  "version": "7.0.0",
+  "version": "9.0.0",
   "description": "A simple utility to convert deeply nested YAML files to JSON objects",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/satmaramani/yaml-to-json-converter.git"
+    "url": "git+https://github.com/satmaramani/yaml-to-json-converter/tree/master"
   },
   "keywords": [
     "yaml",
@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/satmaramani/yaml-to-json-converter/issues"
   },
-  "homepage": "https://github.com/satmaramani/yaml-to-json-converter#readme",
+  "homepage": "https://github.com/satmaramani/yaml-to-json-converter/blob/master/README.md",
   "dependencies": {
     "yaml": "^2.0.0",
     "fs": "^0.0.1-security"
