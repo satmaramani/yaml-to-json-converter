@@ -1,7 +1,7 @@
 {
   "name": "yaml-to-json-converter",
-  "version": "9.0.0",
-  "description": "A simple utility to convert deeply nested YAML files to JSON objects",
+  "version": "11.0.0",
+  "description": "A simple utility to convert deeply nested YAML files OR yaml contents to JSON objects",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"

@@ -17,4 +17,14 @@ function readYamlFile(filePath) {
   }
 }
 
-module.exports = readYamlFile;
+function readYamlContents(contents) {
+    try {
+      const data = yaml.parse(contents);
+      return data;
+    } catch (error) {
+      console.error("Error reading or parsing the YAML file:", error);
+      return null;
+    }
+  }
+
+module.exports = {readYamlFile, readYamlContents};

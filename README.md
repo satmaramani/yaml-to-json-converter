@@ -8,11 +8,11 @@ A simple utility to convert deeply nested YAML files to JSON objects.
 npm install yaml-to-json-converter
 ```
 
-#### Usage Code from client repo 
+#### Example Usage Code from client repo considering deeply-nested.yaml file below as a source yaml contents 
 
 ```plaintext
     
-const readYamlFile = require("yaml-to-json-converter");
+const {readYamlFile} = require("yaml-to-json-converter");
 
 const filePath = "deeply-nested.yaml";
 const jsonData = readYamlFile(filePath);
@@ -36,7 +36,41 @@ if (jsonData) {
 
 ```
 
-#### deeply-nested.yml file contents for reference 
+#### Example on reading direct YAML contents 
+
+```
+const {readYamlContents} = require("yaml-to-json-converter");
+
+const yamlContents = 
+`app:
+  name: MyApp
+  version: 1.0.0
+  environment: production
+  database:
+    host: localhost
+    port: 5432
+    name: myapp_db
+    credentials:
+      username: user123
+      password: pass123
+`;
+
+//reading through contents 
+const jsonData2 = readYamlContents(yamlContents);
+
+console.log(
+    "\n 2nd Example app-> database -> credentials -> username :",
+    jsonData2.app.database.credentials.username
+  );
+
+
+  console.log(
+    "\n 2nd Example Showing app -> name :",
+    jsonData2.app.name
+  );  
+```
+
+#### deeply-nested.yaml file contents for reference 
 
 ```plaintext
 
