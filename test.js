@@ -20,6 +20,12 @@ if (jsonData) {
     "\n UNDEFINED example services auth URL => :",
     jsonData.app.services.auth.url.sdf
   );
+
+  console.log(
+    "\n SUPER DEEP NESTED 7  Level app -> services -> payment -> endpoints -> statusdeep1 -> statusdeep11 -> statusdeep111key :",
+    jsonData.app.services.payment.endpoints.statusdeep1.statusdeep11.statusdeep111key
+  );  
+
 }
 const yamlContents = 
 `app:
@@ -47,3 +53,6 @@ console.log(
     "\n 2nd Example Showing app -> name :",
     jsonData2.app.name
   );  
+
+
+  

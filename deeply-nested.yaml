@@ -26,6 +26,11 @@ app:
       endpoints:
         process: /process
         status: /status
+        statusdeep1:
+          statusdeep1key: statusdeep1value
+          statusdeep11:
+            statusdeep111key: statusdeep111value
+            
   features:
     - name: FeatureA
       enabled: true
