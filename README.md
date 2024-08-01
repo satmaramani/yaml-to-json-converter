@@ -137,7 +137,10 @@ app: # 1st Level
 
 
 ```
-![Example Image](./yaml_levels.png)
+
+Image showing 7 levels YAML contents 
+
+![Image showing Levels]( https://raw.githubusercontent.com/satmaramani/yaml-to-json-converter/master/yaml_levels.png )
 
 #### Add a License
 
