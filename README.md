@@ -1,6 +1,10 @@
 # yaml-to-json-converter
 
-A simple utility to convert deeply nested YAML files to JSON objects.
+A simple utility to convert deeply nested YAML files to JSON objects, below example is a 7 deep level YAML file.
+
+YAML-to-JSON Converter is a versatile utility designed to transform single, double or deeply nested YAML files into JSON objects effortlessly. This tool accommodates any level of nested YAML structures, ensuring there are no depth restrictions. Users can either input a YAML file or provide hardcoded YAML strings for conversion, both examples are given below. 
+
+The utility guarantees seamless handling of complex YAML hierarchies, making it ideal for developers and data engineers. Whether you are dealing with configuration files, data serialization, or any YAML-based data format, this converter provides a reliable solution. Simplify your data transformation needs with our YAML-to-JSON Converter and enjoy the flexibility and ease it brings to your workflow.
 
 ## Installation
 
@@ -39,35 +43,9 @@ if (jsonData) {
 #### Example on reading direct YAML contents 
 
 ```
-const {readYamlContents} = require("yaml-to-json-converter");
+const { readYamlContents} = require("yaml-to-json-converter");
 
-const filePath = "deeply-nested.yaml";
 
-//reading through file
-const jsonData = readYamlFile(filePath);
-
-console.log(JSON.stringify(jsonData, null, 2));
-
-if (jsonData) {
-  const dbHost = jsonData.app.database.host;
-  console.log("\n Database Host app-> database -> host:", dbHost);
-
-  console.log(
-    "\n Database credentials username app-> database -> credentials -> username :",
-    jsonData.app.database.credentials.username
-  );
-
-  console.log(
-    "\n UNDEFINED example services auth URL => :",
-    jsonData.app.services.auth.url.sdf
-  );
-
-  console.log(
-    "\n SUPER DEEP NESTED 7  Level app -> services -> payment -> endpoints -> statusdeep1 -> statusdeep11 -> statusdeep111key :",
-    jsonData.app.services.payment.endpoints.statusdeep1.statusdeep11.statusdeep111key
-  );  
-
-}
 const yamlContents = 
 `app:
   name: MyApp
@@ -85,10 +63,19 @@ const yamlContents =
 const jsonData2 = readYamlContents(yamlContents);
 
 console.log(
-    "\n 2nd Example app-> database -> credentials -> username :",
+    "\n Direct Content Reading example app-> environment ",
+    jsonData2.app.environment
+  );
+
+console.log(
+    "\n Direct Content Reading example app-> database -> credentials -> username :",
     jsonData2.app.database.credentials.username
   );
 
+console.log(
+    "\n Direct Content Reading example app-> database -> credentials -> password :",
+    jsonData2.app.database.credentials.password
+  );
 
   console.log(
     "\n 2nd Example Showing app -> name :",
@@ -101,40 +88,40 @@ console.log(
 
 ```plaintext
 
-app:
+app: # 1st Level
   name: MyApp
   version: 1.0.0
   environment: production
-  database:
-    host: localhost
+  database: # 2nd  Level
+    host: localhost # 3rd Level  Level
     port: 5432
     name: myapp_db
     credentials:
       username: user123
       password: pass123
-  services:
-    auth:
+  services: # 2nd  Level
+    auth: # 3rd Level
       url: http://auth.myapp.com
       endpoints:
         login: /login
         register: /register
         logout: /logout
-    user:
+    user:  # 3rd Level
       url: http://user.myapp.com
       endpoints:
         profile: /profile
         settings: /settings
-    payment:
+    payment: # 3rd Level
       url: http://payment.myapp.com
-      endpoints:
-        process: /process
+      endpoints: # 4th Level
+        process: /process 
         status: /status
-        statusdeep1:
+        statusdeep1: # 5th Level
           statusdeep1key: statusdeep1value
-          statusdeep11:
-            statusdeep111key: statusdeep111value
-            
-  features:
+          statusdeep11: # 6th Level
+            statusdeep111key: statusdeep111value # 7th Level
+
+  features: # 2nd  Level
     - name: FeatureA
       enabled: true
       settings:
@@ -145,6 +132,7 @@ app:
       settings:
         option1: value1
         option2: value2
+
 
 
 ```
